@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\marin šop\vjezba2\zadatak1\zadatak1\main.cpp(18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Zadatak1.vcxproj -> D:\Marin Šop\Vjezba2\Zadatak1\Debug\Zadatak1.exe
