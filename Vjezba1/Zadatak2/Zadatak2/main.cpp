@@ -8,6 +8,10 @@ struct Matrix
 	int cols = 0;
 	float** arr;
 
+	void deleteMatrix()
+	{
+		delete arr;
+	}
 	void createMatrix()
 	{
 		std::cout << "Upisi broj redova" << std::endl;
@@ -191,6 +195,11 @@ int main()
 	std::cout << "--------TRANSPOE MATRIX---------" << std::endl;
 	Matrix transMat = matA.transposeMatrix();
 	transMat.matrixOutput();
-
+	matA.deleteMatrix();
+	matB.deleteMatrix();
+	sumMat.deleteMatrix();
+	subMat.deleteMatrix();
+	multMat.deleteMatrix();
+	transMat.deleteMatrix();
 
 }
