@@ -6,12 +6,7 @@ typedef struct _Element
 	void* a;
 	int prioritet;
 } Element;
-void zamijeni(Element* a, Element* b)
-{
-	Element* tmp = b;
-	*b = *a;
-	*a = *tmp;
-}
+
 void popravi(Element* arr, int* size, int i)
 {
 	if (*size == 1) {
@@ -21,14 +16,12 @@ void popravi(Element* arr, int* size, int i)
 		int najveci = i;
 		int l = 2 * i + 1;
 		int r = 2 * i + 2;
-		if (l < *size && &arr[l] > &arr[najveci])
+		if (l < *size && arr[l].prioritet > arr[najveci].prioritet)
 			najveci = l;
-		if (r < *size && &arr[r] > &arr[najveci])
+		if (r < *size && arr[r].prioritet > arr[najveci].prioritet)
 			najveci = r;
-		printf("najveci: %d\n", arr[najveci].prioritet);
 		if (najveci != i) 
 		{
-			//zamijeni(&arr[i], &arr[najveci]);
 			Element tmp = arr[najveci];
 			arr[najveci] = arr[i];
 			arr[i] = tmp;
@@ -48,7 +41,7 @@ void add(Element* arr, int p, int* size)
 	{
 		arr[*size].prioritet = p;
 		*size += 1;
-		for (int i = *size / 2-1; i >= 0; i--) {
+		for (int i = (*size-1) / 2; i >= 0; i--) {
 			popravi(arr, size, i);
 		}
 	}
@@ -56,7 +49,7 @@ void add(Element* arr, int p, int* size)
 
 void print(Element* arr, int size) {
 	for (int i = 0; i < size; ++i)
-		printf("%d ", arr[i].prioritet);
+		printf("%d:[%d] ",i, arr[i].prioritet);
 	printf("\n");
 }
 
